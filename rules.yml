@@ -1,0 +1,25 @@
+rules:
+    normal_exercise_num_chars_assignment:
+        min: 0
+        max: 2000
+    tab_exercise_num_chars_assignment:
+        min: 0
+        max: 2000
+    bullet_exercise_num_chars_assignment:
+        min: 0
+        max: 2000
+    tab_normal_ex_num_chars_instructions:
+        min: 0
+        max: 500
+    bullet_normal_ex_num_chars_instructions:
+        min: 0
+        max: 500
+    tab_exercise_num_subex:
+        min: 0
+        max: 6
+    bullet_exercise_num_subex:
+        min: 0
+        max: 6
+    chapter_num_exercises_chapter_n:
+        min: 6
+        max: 12

@@ -1,0 +1,246 @@
+---
+title: Chapter 2 - Code
+output: html_notebook
+---
+
+```{r setup}
+library(RPostgreSQL)
+db <- dbConnect(dbDriver("PostgreSQL"), dbname = "blog", host = "localhost")
+knitr::opts_chunk$set(connection = "db")
+```
+
+---
+
+```{sql}
+SELECT *
+FROM users
+WHERE username = 'sporty88';
+```
+
+```{sql}
+SELECT *
+FROM users
+WHERE username <> 'sporty88';
+```
+
+```{sql}
+SELECT *
+FROM users
+WHERE id = 9;
+```
+
+```{sql}
+SELECT *
+FROM users
+WHERE age > 21;
+```
+
+```{sql}
+SELECT *
+FROM users
+WHERE age >= 21;
+```
+
+---
+
+Select all records from `reads` where a user read the first blog post (`id` = 1) *before* January 20?
+
+```{sql}
+SELECT *
+FROM reads
+WHERE date_read <= '2017-01-19'
+AND post_id = 1;
+```
+
+Return all posts launched between 2017-01-15 and 2017-01-21. (You'll see an easier way to do this shortly!)
+
+```{sql}
+SELECT *
+FROM posts
+WHERE date_posted >= '2017-01-15'
+AND date_posted <= '2017-01-21';
+```
+
+Return all posts launched before 2017-01-05 or after 2017-01-21.
+
+```{sql}
+SELECT *
+FROM posts
+WHERE date_posted < '2017-01-15'
+OR date_posted > '2017-01-21';
+```
+
+Now incorporate an aggregate function to COUNT the number of posts satisfying these conditions.
+
+```{sql}
+SELECT COUNT(*)
+FROM posts
+WHERE date_posted < '2017-01-15'
+OR date_posted > '2017-01-21';
+```
+
+---
+
+```{sql}
+SELECT *
+FROM users
+WHERE age BETWEEN 30 AND 40;
+```
+
+Which of the following is equivilent to the query above?
+
+```{sql}
+SELECT *
+FROM users
+WHERE age >= 30
+AND age <= 40;
+```
+
+---
+
+Select all records from reads where duration is between 200 and 500.
+
+```{sql}
+SELECT *
+FROM reads
+WHERE duration BETWEEN 200 AND 500;
+```
+
+Select all records from reads where duration is between 200 and 500 or greater than 800.
+
+```{sql}
+SELECT *
+FROM reads
+WHERE duration BETWEEN 200 AND 500
+OR duration > 800;
+```
+
+Use IN to select all records from reads where post_id is 3, 6, or 8.
+
+```{sql}
+SELECT * 
+FROM reads
+WHERE post_id IN (3, 6, 8);
+```
+
+Use a combination of BETWEEN and IN to select all records from reads where post_id is 3, 6, or 8 and duration is between 400 and 600.
+
+```{sql}
+SELECT * 
+FROM reads
+WHERE post_id IN (3, 6, 8)
+AND duration BETWEEN 400 AND 600;
+```
+
+---
+
+```{sql}
+SELECT *
+FROM users;
+```
+
+Which users didn't respond to the trip_planned survey question?
+
+```{sql}
+SELECT *
+FROM users
+WHERE trip_planned IS NOT NULL;
+```
+
+Which users didn't provide their age in the survey?
+
+```{sql}
+SELECT *
+FROM users
+WHERE age IS NOT NULL;
+```
+
+Are these the same people? Did any users provide an answer to the trip_planned question, but not their age?
+
+```{sql}
+SELECT *
+FROM users
+WHERE age IS NOT NULL
+AND trip_planned IS NULL;
+```
+
+Count the number of users who didn't provide an answer to either question, but are `Paid` subscribers?
+
+```{sql}
+SELECT COUNT(*)
+FROM users
+WHERE age IS NULL
+AND trip_planned IS NULL;
+```
+
+---
+
+```{sql}
+SELECT *
+FROM posts
+WHERE title LIKE '%Rocky Mountains%';
+```
+
+```{sql}
+SELECT *
+FROM posts
+WHERE title LIKE '%Rock%';
+```
+
+```{sql}
+SELECT *
+FROM posts
+WHERE title NOT LIKE '%Rock%'
+AND title NOT LIKE '%Napa%';
+```
+
+```{sql}
+SELECT *
+FROM posts
+WHERE title NOT LIKE '%Rock%'
+AND date_posted > '2017-01-23';
+```
+
+---
+
+```{sql}
+SELECT *
+FROM users
+WHERE username ~ '[r-z]';
+```
+
+```{sql}
+SELECT *
+FROM users
+WHERE username ~ '^[r-z]';
+```
+
+```{sql}
+SELECT *
+FROM users
+WHERE username ~ '[0-9]$';
+```
+
+```{sql}
+SELECT *
+FROM users
+WHERE username ~ '^[r-z].*[0-9]+$';
+```
+
+---
+
+Average reading time per article?
+
+```{sql}
+SELECT AVG(duration)
+FROM reads;
+```
+
+Average reading time, ignoring outliers (likely due to users leaving tabs open)?
+
+```{sql}
+SELECT AVG(duration)
+FROM reads
+WHERE duration < 1000;
+```
+

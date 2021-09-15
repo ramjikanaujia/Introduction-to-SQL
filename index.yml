@@ -1,0 +1,213 @@
+course_title: Intro to SQL for Data Science
+course_description: Course description here.
+programming_language: sql
+chapters:
+  - chapter_title: Selecting and summarizing columns
+    chapter_description: >-
+      This chapter provides a brief introduction to working with relational
+      databases. You'll learn about their structure, how to talk about them
+      using database lingo, and how to begin an analysis by using simple SQL
+      commands to select and summarize columns from database tables.
+    exercises:
+      - type: VideoExercise
+        title: Introducing SQL
+        content: >-
+          - Motivating example: preview of Citi Bike case study. - Why not just
+          use R / Python?
+            - Memory
+            - Speed
+            - Centralization
+            - Acesss control
+            - DBMS tools
+            - Scalability
+          - Vocabulary: comparing to spreadsheet
+            - Database: like a spreadsheet
+            - Table: like a worksheet
+            - Columns / Rows: same concept
+            - Fields: cells
+            - Entities:
+            - Attributes:
+          - Basic SQL syntax
+            - We're using PostgreSQL
+            - Not case sensitive
+            - Statements end with semi-colon
+            - Brief intro to order of operations
+          - Introducing SELECT, SELECT * and DISTINCT - Brief note on LIMIT
+      - type: MultipleChoiceExercise
+        title: Which of the following is a good reason to use SQL?
+        content: '- Question and answers go here.'
+      - type: NormalExercise
+        title: Single Column SELECTs
+        content: '- Selecting stuff from single column.'
+      - type: NormalExercise
+        title: Multiple Column SELECTs
+        content: '- Selecting stuff from multiple columns.'
+      - type: NormalExercise
+        title: SELECT DISTINCT
+        content: '- Selecting distinct stuff from single columns.'
+      - type: VideoExercise
+        title: Aggregate Functions
+        content: >-
+          - Introducing COUNT - COUNT DISTINCT - Difference between COUNT(*),
+          COUNT(col) and COUNT(DISTINCT) - SUM, AVG, MIN, MAX - Introduction to
+          Aliasing using AS - ROUND, FLOOR, CEILING
+      - type: NormalExercise
+        title: Learning to COUNT
+        content: '- Simple count exercises.'
+      - type: NormalExercise
+        title: Different COUNTs
+        content: >-
+          - Exercises showing difference between COUNT(*), COUNT(col) AND
+          COUNT(DISTINCT)
+      - type: NormalExercise
+        title: 'SUM, AVG, MIN, MAX'
+        content: '- Simple exercises using SUM, AVG, MIN, MAX'
+      - type: VideoExercise
+        title: Arithmetic in SQL
+        content: >-
+          - Some stuff about arithmetic in SQL - Introduction to alisaing using
+          AS
+      - type: NormalExercise
+        title: It's AS simple AS Aliasing
+        content: '- Simple AS exercises.'
+      - type: NormalExercise
+        title: Even More Aliasing
+        content: '- Some aliasing with arithmetic.'
+  - chapter_title: Filtering Rows
+    chapter_description: >-
+      This chapter builds on the first by teaching you not only how to select
+      and summarize columns of interest, but to filter tables for records
+      satisfying some criteria of interest. You'll learn how to use basic
+      comparison operators, combine multiple criteria, match patterns in text,
+      and much more.
+    exercises:
+      - type: VideoExercise
+        title: ''
+        content: ''
+      - title: WHERE oh WHERE
+        content: >-
+          - Introduction to WHERE - Filtering numeric values - Filtering text
+          values - Basic comparison operators - Multiple WHERE conditions: AND,
+          OR
+      - type: NormalExercise
+        title: Simple Filtering of Text
+        content: '- Some basic filtering examples on text'
+      - type: NormalExercise
+        title: Simple Filtering of Numeric Values
+        content: Some basic filtering examples on numeric values
+      - type: NormalExercise
+        title: WHERE AND
+        content: '- Simple exercises combining WHERE with multiple AND clauses'
+      - type: NormalExercise
+        title: WHERE OR
+        content: '- Simple exercises combining WHERE, AND and OR clauses.'
+      - type: VideoExercise
+        title: More Advanced Filtering
+        content: '- Introduction to BETWEEN, IN - IS NULL, IS NOT NULL'
+      - type: NormalExercise
+        title: BETWEEN (A Rock and A Hard Place)
+        content: '- Simple BETWEEN exercises'
+      - type: NormalExercise
+        title: WHERE IN The World
+        content: '- Exercises using WHERE with IN'
+      - type: NormalExercise
+        title: BETWEEN and AND
+        content: '- Exercises using BETWEEN with AND'
+      - type: NormalExercise
+        title: IN (The Big Leagues)
+        content: '- Exercises using WHERE with IN'
+      - type: NormalExercise
+        title: IS NULL and IS NOT NULL
+        content: '- Using WHERE with IS NULL and IS NOT NULL clauses'
+  - chapter_title: Sorting and Grouping
+    chapter_description: >-
+      Now that you've learned how to select the rows and columns you're most
+      interested in, you'll take your analyses to the next level by learning how
+      to sort and group tables by variables of interest. In particular, you'll
+      see how to combine GROUP BY with aggregate functions like SUM and AVG to
+      summarize your data within groups — a very powerful paradigm!
+    exercises:
+      - type: VideoExercise
+        title: Sorting with ORDER BY
+        content: >-
+          - Introduction to ORDER BY - Single columns, multiple columns -
+          Sorting in reverse order with DESC
+      - type: NormalExercise
+        title: Sorting single columns
+        content: '- Using ORDER BY to sort on single columns'
+      - type: NormalExercise
+        title: Sorting multiple columns
+        content: '- Using ORDER BY to sort on multiple columns'
+      - type: VideoExercise
+        title: Sorting with GROUP BY
+        content: >-
+          - Introduction to GROUP BY - Single columns, multiple columns -
+          Combining GROUP BY with ORDER BY - Using GROUP BY with aggregate
+          functions
+      - type: NormalExercise
+        title: Introduction to GROUP BY on single columns
+        content: '- Using GROUP BY to sort on single columns'
+      - type: NormalExercise
+        title: Introduction to GROUP BY on multiple columns
+        content: '- Using GROUP BY to sort on multiple columns'
+      - type: NormalExercise
+        title: Combining GROUP BY and ORDER BY
+        content: '- Using GROUP BY then ordering results with ORDER BY'
+      - type: VideoExercise
+        title: HAVING A Great Time
+        content: '- Introduction to HAVING - Comparison with WHERE'
+      - type: NormalExercise
+        title: GROUP BY and Aggregate Functions
+        content: '- Using GROUP BY with aggregate functions to get interesting stats'
+      - type: NormalExercise
+        title: HAVING A Great Time
+        content: '- Using HAVING to filter results from aggregate functions'
+      - type: NormalExercise
+        title: Altogether Now
+        content: '- Combining GROUP BY, ORDER BY, and HAVING with aggregate functions'
+  - chapter_title: 'Case Study: Citi Bike In New York City'
+    chapter_description: >-
+      This chapter gives you an opportunity to apply everything you've learned
+      in the first three chapters to real-world data! You'll be working with a
+      database that contains information on millions of individual bike share
+      trips in New York City in 2015, along with the stations the bikes belong
+      to, and daily weather metrics recorded from Central Park during the same
+      time period.
+    exercises:
+      - type: VideoExercise
+        title: Introduction to the CitiBike Data
+        content: >-
+          - Trips, Stations, Weather - Imagine you're part of an urban planning
+          team trying to understand biking habits in NYC to improve bike routes
+          - Etc.
+      - type: MultipleChoiceExercise
+        title: Get to Know Your Data
+        content: Questions and answers go here.
+      - type: NormalExercise
+        title: Know Your LIMITs
+        content: '- Selecting from the different tables, but using LIMIT - Counts'
+      - type: NormalExercise
+        title: Make Your Way Around (The Dataset)
+        content: '- Getting MIN, MAX, AVG'
+      - type: NormalExercise
+        title: Filtering
+        content: '- Filtering based on various criteria'
+      - type: NormalExercise
+        title: More Filtering
+        content: '- More examples of filtering for interesting information'
+      - type: NormalExercise
+        title: Weather
+        content: '- Some weather related questions'
+      - type: NormalExercise
+        title: Stations
+        content: '- Some questions related to stations'
+      - type: NormalExercise
+        title: Times
+        content: >-
+          - Some time related questions - e.g. most popular days to go cycling,
+          etc.
+      - type: VideoExercise
+        title: Summary
+        content: >-
+          - Summarize the case study - Summarize the course - Give suggestions
+          for further projects using what you've learned
